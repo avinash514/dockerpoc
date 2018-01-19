@@ -23,7 +23,7 @@ Copy-Item c:/source/tomcat -Destination c:/tomcat -Recurse; \
 
 Test-Path c:/target; \
 
-New-Item -ItemType File -Path c:/tomcat/webapps/ROOT.war -Force; \
+#New-Item -ItemType File -Path c:/tomcat/webapps/ROOT.war -Force; \
 
 Test-Path c:/tomcat/webapps;\
 
@@ -39,7 +39,9 @@ sc.exe config tomcat9 obj=LocalSystem start=auto; \
 # REMOVE TOMCAT SETUP FILES FROM SOURCE DIRECTORY
 #cmd.exe /c rd /S /Q c:\source
 cmd.exe /c echo "Initial Setup is Done!!"; \
-Copy-Item c:/target/calculator-1.0.war -Destination c:/tomcat/webapps/ROOT.war -Force
+cmd.exe /c echo "Copying WAR file!!!"; \
+Copy-Item c:/target/calculator-1.0.war c:/tomcat/webapps/ROOT.war -Force; \
+cmd.exe /c echo "Copy WAR file is Done!!"
 
 #cmd.exe /c dir %CATALINA_HOME%; \
 #cmd.exe /c rd /S /Q %CATALINA_HOME%\webapps\ROOT; \
