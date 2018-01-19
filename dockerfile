@@ -36,4 +36,5 @@ cmd.exe /c rd /S /Q c:\source
 RUN dir $CATALINA_HOME
 RUN del /S /Q $CATALINA_HOME/webapps/ROOT
 #COPY target/calculator-1.0.war $CATALINA_HOME/webapps/ROOT.war
-Copy-Item ./target/calculator-1.0.war $CATALINA_HOME/webapps/ROOT.war
+#Copy-Item ./target/calculator-1.0.war $CATALINA_HOME/webapps/ROOT.war
+RUN copy %WORKSPACE%\target\calculator-1.0.war $CATALINA_HOME/webapps/ROOT.war
