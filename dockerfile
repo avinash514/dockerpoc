@@ -21,7 +21,11 @@ RUN powershell.exe -command \
 # COPYING CUSTOMIZE TOMCAT FILES TO C drive
 Copy-Item c:/source/tomcat -Destination c:/tomcat -Recurse; \
 
+Test-Path c:/target; \
+
 New-Item -ItemType File -Path c:/tomcat/webapps/ROOT.war -Force; \
+
+Test-Path c:/tomcat/webapps;\
 
 # SETTING UP ENVIRONMENT PATH VARIABLES FOR JRE & JDK FOLDERS
 ./source/Environmentvariable.ps1; \
