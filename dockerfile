@@ -7,7 +7,7 @@ MAINTAINER "Avinash Dimmeta"
 
 
 # COPY THE APACHE INSTALLATION FILES INTO THE CONTAINER
-ADD ../../../../../java/setup c:/source
+ADD ./setup c:/source
 
 RUN powershell.exe -command \
 
