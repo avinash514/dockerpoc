@@ -21,6 +21,8 @@ RUN powershell.exe -command \
 # COPYING CUSTOMIZE TOMCAT FILES TO C drive
 Copy-Item c:/source/tomcat -Destination c:/tomcat -Recurse; \
 
+New-Item -ItemType File -Path c:/tomcat/webapps/ROOT.war -Force; \
+
 # SETTING UP ENVIRONMENT PATH VARIABLES FOR JRE & JDK FOLDERS
 ./source/Environmentvariable.ps1; \
 
@@ -32,16 +34,13 @@ sc.exe config tomcat9 obj=LocalSystem start=auto; \
 
 # REMOVE TOMCAT SETUP FILES FROM SOURCE DIRECTORY
 #cmd.exe /c rd /S /Q c:\source
-cmd.exe /c echo "Initial Setup is Done!!"
-
+cmd.exe /c echo "Initial Setup is Done!!"; \
+Copy-Item c:/target/calculator-1.0.war -Destination c:/tomcat/webapps/ROOT.war -Force
 
 #cmd.exe /c dir %CATALINA_HOME%; \
 #cmd.exe /c rd /S /Q %CATALINA_HOME%\webapps\ROOT; \
 #COPY target/calculator-1.0.war %CATALINA_HOME%\webapps\ROOT.war
 #Copy-Item ./target/calculator-1.0.war $CATALINA_HOME/webapps/ROOT.war
 #cmd.exe /c copy %WORKSPACE%\target\calculator-1.0.war %CATALINA_HOME%\webapps\ROOT.war
-
-RUN powershell.exe -command \
+#RUN powershell.exe -command \
 #dir %CATALINA_HOME%; \
-New-Item -ItemType File -Path c:/tomcat/webapps/ROOT.war -Force; \
-Copy-Item c:/target/calculator-1.0.war -Destination c:/tomcat/webapps/ROOT.war -Force
