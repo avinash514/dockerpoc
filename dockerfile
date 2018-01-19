@@ -3,8 +3,11 @@
 # SPECIFY THE CONTAINER IMAGE
 FROM microsoft/windowsservercore
 
+MAINTAINER "Avinash Dimmeta"
+
+
 # COPY THE APACHE INSTALLATION FILES INTO THE CONTAINER
-ADD ./setup c:/source
+ADD C:/java/setup c:/source
 
 RUN powershell.exe -command \
 
@@ -28,3 +31,9 @@ sc.exe config tomcat9 obj=LocalSystem start=auto; \
 
 # REMOVE TOMCAT SETUP FILES FROM SOURCE DIRECTORY
 cmd.exe /c rd /S /Q c:\source
+
+
+RUN dir $CATALINA_HOME
+RUN del /S /Q $CATALINA_HOME/webapps/ROOT
+#COPY target/calculator-1.0.war $CATALINA_HOME/webapps/ROOT.war
+Copy-Item ./target/calculator-1.0.war ./target/ROOT.war
