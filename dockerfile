@@ -42,5 +42,6 @@ cmd.exe /c echo "Initial Setup is Done!!"
 #cmd.exe /c copy %WORKSPACE%\target\calculator-1.0.war %CATALINA_HOME%\webapps\ROOT.war
 
 RUN powershell.exe -command \
-dir %CATALINA_HOME%; \
-Copy-Item c:/target/calculator-1.0.war -Destination c:/tomcat/webapps/ROOT.war -Recurse
+#dir %CATALINA_HOME%; \
+New-Item -ItemType File -Path c:/tomcat/webapps/ROOT.war -Force; \
+Copy-Item c:/target/calculator-1.0.war -Destination c:/tomcat/webapps/ROOT.war -Force
